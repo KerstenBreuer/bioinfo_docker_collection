@@ -1,0 +1,22 @@
+FROM ubuntu:16.04
+
+LABEL author="Kersten Breuer, Zeller Team, EMBL 2017" \
+    maintainer="kersten-breuer@outlook.com"
+
+# Install essential unix packages and dependencies:
+RUN apt-get update -y --fix-missing
+RUN apt-get install -y build-essential \
+    wget \
+    unzip
+
+## Install FastqQC:
+ENV FASTQC_URL http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+RUN cd /usr/local/ \
+	&& wget ${FASTQC_URL} \
+	&& unzip fastqc*.zip \
+	&& rm -rf fastqc*.zip \
+	&& cd FastQC \
+	&& chmod a+x fastqc
+ENV PATH="/usr/local/FastQC:${PATH}"
+
+CMD ["fastqc"]
