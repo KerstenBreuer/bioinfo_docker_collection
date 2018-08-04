@@ -11,6 +11,7 @@ RUN apt-get update -qq -y --fix-missing
 RUN apt-get install -y \
     build-essential \
     wget \
+	curl \
     tar \
     bzip2 \
 	cmake \
