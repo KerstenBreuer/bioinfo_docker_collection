@@ -15,6 +15,11 @@ RUN apt-get install -y \
     tar \
     bzip2 \
 	cmake \
+	libcurl \
+	ocl-icd-libopencl1 \
+	opencl-headers \
+	clinfo \
+	libfoo-dev \
 	zlib1g-dev  \
 	python-dev \
 	python-pip
