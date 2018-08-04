@@ -1,8 +1,22 @@
-########################################
-### Dockerfile for running deeptools ###
-########################################
+FROM ubuntu:16.04
 
-FROM python:2.7.13
+LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
+    maintainer="kersten-breuer@outlook.com"
+
+# Package versions/links:
+ENV DEEPTOOlS_VERSION 2.3.3
+
+# Install essential dependencies:
+RUN apt-get update -qq -y --fix-missing
+RUN apt-get install -y \
+    build-essential \
+    wget \
+    tar \
+    bzip2 \
+	cmake \
+	zlib1g-dev  \
+	python-dev \
+	python-pip
 
 # install requirement numpy
 RUN pip install \
@@ -14,9 +28,12 @@ RUN pip install \
 	matplotlib
 
 # install deeptools (remaining requirements should install automatically):
-RUN cd /srv; \
-	wget https://github.com/fidelram/deepTools/archive/2.3.3.tar.gz; \
-	tar xzvf 2.3.3.tar.gz; \
-	rm 2.3.3.tar.gz; \
-	cd deepTools-2.3.3; \
+RUN cd /usr/local/ && \
+	wget https://github.com/fidelram/deepTools/archive/${DEEPTOOlS_VERSION}.tar.gz && \
+	tar xzvf ${DEEPTOOlS_VERSION}.tar.gz && \
+	rm ${DEEPTOOlS_VERSION}.tar.gz && \
+	&& mv deepTools-${DEEPTOOlS_VERSION}} deepTools && \
+	cd deepTools && \
 	python setup.py install
+
+ENV PATH=/usr/local/deepTools/:${PATH}
