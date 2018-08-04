@@ -32,7 +32,7 @@ RUN cd /usr/local/ && \
 	wget https://github.com/fidelram/deepTools/archive/${DEEPTOOlS_VERSION}.tar.gz && \
 	tar xzvf ${DEEPTOOlS_VERSION}.tar.gz && \
 	rm ${DEEPTOOlS_VERSION}.tar.gz && \
-	&& mv deepTools-${DEEPTOOlS_VERSION}} deepTools && \
+	&& mv deepTools-${DEEPTOOlS_VERSION} deepTools && \
 	cd deepTools && \
 	python setup.py install
 
