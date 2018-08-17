@@ -18,7 +18,6 @@ RUN apt-get install -y \
 	ocl-icd-libopencl1 \
 	opencl-headers \
 	clinfo \
-	libfoo-dev \
 	zlib1g-dev  \
 	python-dev \
 	python-pip
