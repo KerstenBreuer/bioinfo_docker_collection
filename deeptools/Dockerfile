@@ -13,7 +13,8 @@ RUN apt-get install -y \
     wget \
     tar \
 	python3-dev \
-	python3-pip
+	python3-pip \
+	libz-dev
 
 # install requirement numpy
 RUN pip3 install --upgrade pip

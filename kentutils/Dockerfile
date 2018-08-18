@@ -3,8 +3,7 @@ FROM ubuntu:16.04
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
-# Package versions/links:
-ENV KENTUTILS_URL https://github.com/ENCODE-DCC/kentUtils/archive/v302.1.0.tar.gz
+ENV UCSC_USERAPPS_URL http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v369.src.tgz
 
 # Install essential dependencies:
 RUN apt-get update -qq -y --fix-missing
@@ -13,21 +12,17 @@ RUN apt-get install -y \
     wget \
     tar \
     git \
-    libtool \
-	libz-dev libssl-dev \
-	openssl \
-	libpng12-dev \
-	mysql-client  \
-	libmysqlclient-dev
+    libz-dev libssl-dev \
+    openssl \
+    libpng12-dev \
+    mysql-client  \
+    libmysqlclient-dev
 
-# Install kentutils
+# Install utilities
 RUN cd /usr/local \
-  && wget -O kentUtils.tar.gz ${KENTUTILS_URL} \
-  && tar -xvzf kentUtils.tar.gz \
-  && rm kentUtils.tar.gz \
-  && mv kent* kentUtils \
-  && cd kentUtils  \
-  && make \
-  && rm -r kentUtils.tar.gz
+    && wget -O userApps.tgz ${UCSC_USERAPPS_URL} \
+    && tar -xzvf userApps.tgz \
+    && rm userApps.tgz \
+    && chmod -R 777 ./userApps/kent/src/utils
 
-ENV PATH=/usr/local/kentUtils/:${PATH}
+ENV PATH=/usr/local/userApps/kent/src/utils/:${PATH}
