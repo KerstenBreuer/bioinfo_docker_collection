@@ -11,20 +11,13 @@ RUN apt-get update -qq -y --fix-missing
 RUN apt-get install -y \
     build-essential \
     wget \
-	curl \
     tar \
-    bzip2 \
-	cmake \
-	ocl-icd-libopencl1 \
-	opencl-headers \
-	clinfo \
-	zlib1g-dev  \
-	python-dev \
-	python-pip \
-	libtool
+	python3-dev \
+	python3-pip
 
 # install requirement numpy
-RUN pip install \
+RUN pip3 install --upgrade pip
+RUN pip3 install\
 	numpy \
 	scipy \
 	py2bit \
@@ -34,11 +27,11 @@ Run pip install pyBigWig
 
 # install deeptools (remaining requirements should install automatically):
 RUN cd /usr/local/ && \
-	wget ${DEEPTOOlS_URL} && \
-	tar xzvf *.tar.gz && \
-	rm *.tar.gz && \
+	wget -O deepTools.tar.gz ${DEEPTOOlS_URL} && \
+	tar xzvf deepTools.tar.gz && \
+	rm deepTools.tar.gz && \
 	&& mv deepTools* deepTools && \
 	cd deepTools && \
-	python setup.py install
+	python3 setup.py install
 
 ENV PATH=/usr/local/deepTools/:${PATH}
