@@ -13,7 +13,9 @@ RUN apt-get install -y \
     build-essential \
     wget \
     tar \
-    r-base
+    r-base \
+    curl \
+    libssl-dev
 
 # Install samtools:
 RUN CMDS="install.packages(\"devtools\", repos=\"http://cran.us.r-project.org\")" \

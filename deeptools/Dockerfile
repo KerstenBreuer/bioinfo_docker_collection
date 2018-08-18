@@ -12,9 +12,14 @@ RUN apt-get install -y \
     build-essential \
     wget \
     tar \
+	curl \
+	libtool
+RUN apt-get install -y \
 	python3-dev \
 	python3-pip \
-	libz-dev
+	libz-dev \
+    libssl-dev \
+	libcurl4-openssl-dev
 
 # install requirement numpy
 RUN pip3 install --upgrade pip
