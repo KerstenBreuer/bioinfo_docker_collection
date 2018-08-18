@@ -22,8 +22,8 @@ RUN pip3 install\
 	scipy \
 	py2bit \
 	pysam \
-	matplotlib
-Run pip install pyBigWig
+	matplotlib \
+	pyBigWig
 
 # install deeptools (remaining requirements should install automatically):
 RUN cd /usr/local/ && \
