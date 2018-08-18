@@ -4,7 +4,7 @@ LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
 # Package versions/links:
-ENV DEEPTOOlS_VERSION 2.3.3
+ENV DEEPTOOlS_URL https://github.com/deeptools/deepTools/archive/3.1.1.tar.gz
 
 # Install essential dependencies:
 RUN apt-get update -qq -y --fix-missing
@@ -20,7 +20,8 @@ RUN apt-get install -y \
 	clinfo \
 	zlib1g-dev  \
 	python-dev \
-	python-pip
+	python-pip \
+	libtool
 
 # install requirement numpy
 RUN pip install \
@@ -33,10 +34,10 @@ RUN pip install \
 
 # install deeptools (remaining requirements should install automatically):
 RUN cd /usr/local/ && \
-	wget https://github.com/fidelram/deepTools/archive/${DEEPTOOlS_VERSION}.tar.gz && \
-	tar xzvf ${DEEPTOOlS_VERSION}.tar.gz && \
-	rm ${DEEPTOOlS_VERSION}.tar.gz && \
-	&& mv deepTools-${DEEPTOOlS_VERSION} deepTools && \
+	wget ${DEEPTOOlS_URL} && \
+	tar xzvf *.tar.gz && \
+	rm *.tar.gz && \
+	&& mv deepTools* deepTools && \
 	cd deepTools && \
 	python setup.py install
 

@@ -12,6 +12,7 @@ RUN apt-get install -y \
     build-essential \
     wget \
     tar \
+    libtool \
 	libz-dev libssl-dev \
 	openssl \
 	libpng12-dev \
@@ -22,8 +23,9 @@ RUN apt-get install -y \
 RUN cd /usr/local \
   && wget -O kentUtils.tar.gz ${TRIM_GALORE_URL} \
   && tar -xvzf kentUtils.tar.gz \
-  && mv kentUtils* kentUtils \
-  && cd ./kentUtils  \
+  && rm kentUtils.tar.gz \
+  && mv kent* kentUtils \
+  && cd kentUtils  \
   && make \
   && rm -r kentUtils.tar.gz
 

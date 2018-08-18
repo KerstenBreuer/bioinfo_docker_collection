@@ -13,7 +13,7 @@ RUN apt-get install -y \
     build-essential \
     wget \
     tar \
-    rbase
+    r-base
 
 # Install samtools:
 RUN CMDS="require(devtools)" \
