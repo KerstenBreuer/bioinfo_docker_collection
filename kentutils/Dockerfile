@@ -21,7 +21,7 @@ RUN apt-get install -y \
 
 # Install kentutils
 RUN cd /usr/local \
-  && wget -O kentUtils.tar.gz ${TRIM_GALORE_URL} \
+  && wget -O kentUtils.tar.gz ${KENTUTILS_URL} \
   && tar -xvzf kentUtils.tar.gz \
   && rm kentUtils.tar.gz \
   && mv kent* kentUtils \
