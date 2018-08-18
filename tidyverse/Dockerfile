@@ -17,7 +17,7 @@ RUN apt-get install -y \
 
 # Install samtools:
 RUN CMDS="install.packages(\"devtools\")" \
-    && CMDS="${CMDS}; library(devtools)" \
+    && CMDS="${CMDS}; library(devtools, repos=\"http://cran.us.r-project.org\")" \
 	&& CMDS="${CMDS}; install_version(\"tidyverse\", version=\"${TIDYVERSE_VER}\", repos=\"http://cran.us.r-project.org\")" \
 	&& CMDS="${CMDS}; install_version(\"gridExtra\", version=\"${GRIDEXTRA_VER}\", repos=\"http://cran.us.r-project.org\")" \
 	&& Rscript -e "${CMDS}"

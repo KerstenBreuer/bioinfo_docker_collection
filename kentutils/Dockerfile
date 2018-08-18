@@ -12,6 +12,7 @@ RUN apt-get install -y \
     build-essential \
     wget \
     tar \
+    git \
     libtool \
 	libz-dev libssl-dev \
 	openssl \
