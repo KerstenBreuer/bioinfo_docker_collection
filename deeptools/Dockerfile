@@ -36,7 +36,7 @@ RUN cd /usr/local/ && \
 	wget -O deepTools.tar.gz ${DEEPTOOlS_URL} && \
 	tar xzvf deepTools.tar.gz && \
 	rm deepTools.tar.gz && \
-	&& mv deepTools* deepTools && \
+	mv deepTools* deepTools && \
 	cd deepTools && \
 	python3 setup.py install
 

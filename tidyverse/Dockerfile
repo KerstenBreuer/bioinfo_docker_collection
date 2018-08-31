@@ -15,7 +15,10 @@ RUN apt-get install -y \
     tar \
     r-base \
     curl \
-    libssl-dev
+    libssl-dev \
+    libxml2-dev \
+    libxslt-dev \
+	libcurl4-openssl-dev
 
 # Install samtools:
 RUN CMDS="install.packages(\"devtools\", repos=\"http://cran.us.r-project.org\")" \
