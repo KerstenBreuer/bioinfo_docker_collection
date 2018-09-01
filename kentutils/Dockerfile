@@ -23,6 +23,6 @@ RUN cd /usr/local \
     && wget -O userApps.tgz ${UCSC_USERAPPS_URL} \
     && tar -xzvf userApps.tgz \
     && rm userApps.tgz \
-    && chmod -R 777 ./userApps/kent/src/utils
+    && chmod -R 777 ./userApps/
 
 ENV PATH=/usr/local/userApps/kent/src/utils/:${PATH}
