@@ -5,7 +5,7 @@ LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
 
 # Package versions/links:
 ENV CUTADAPT_VERSION 1.14
-ENV FASTQC_URL http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+ENV FASTQC_URL http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.7.zip
 ENV TRIM_GALORE_URL https://github.com/FelixKrueger/TrimGalore/archive/0.4.4.tar.gz
 
 RUN apt-get -y update
