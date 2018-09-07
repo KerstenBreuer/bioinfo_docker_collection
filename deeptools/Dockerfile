@@ -29,7 +29,8 @@ RUN pip3 install\
 	py2bit \
 	pysam \
 	matplotlib \
-	pyBigWig
+	pyBigWig \
+	plotly
 
 # install deeptools (remaining requirements should install automatically):
 RUN cd /usr/local/ && \
