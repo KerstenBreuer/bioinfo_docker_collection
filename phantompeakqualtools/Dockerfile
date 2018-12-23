@@ -41,8 +41,7 @@ RUN Rscript -e "install.packages('snow', repos='http://cran.us.r-project.org')" 
 	&& Rscript -e "install.packages('snowfall', repos='http://cran.us.r-project.org')" \
 	&& Rscript -e "install.packages('bitops', repos='http://cran.us.r-project.org')" \
 	&& Rscript -e "install.packages('caTools', repos='http://cran.us.r-project.org')" \
-	&& Rscript -e "source('http://bioconductor.org/biocLite.R'); biocLite('Rsamtools',suppressUpdates=TRUE)" \
-	&& R CMD INSTALL /phantompeakqualtools-1.2/spp_1.14.tar.gz \
-	&& Rscript -e "install.packages('/usr/bin/phantompeakqualtools-1.2/spp_1.14.tar.gz')" \
+	&& Rscript -e "source('http://bioconductor.org/biocLite.R') && biocLite('Rsamtools',suppressUpdates=TRUE)" \
+	&& Rscript -e "install.packages('/usr/bin/phantompeakqualtools-1.2/spp_1.14.tar.gz')"
 
 ENV PATH=/usr/bin/samtools-1.5/:/usr/bin/phantompeakqualtools-1.2/:${PATH}
