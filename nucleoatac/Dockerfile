@@ -28,7 +28,7 @@ RUN pip install\
 	scipy \
 	pysam==0.8.1 \
 	matplotlib \
-	cython==0.22
+	Cython==0.22
 	
 # install nucleoatac:
 RUN cd /usr/local/ && \
