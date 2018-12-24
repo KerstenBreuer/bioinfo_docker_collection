@@ -24,7 +24,7 @@ RUN apt-get install -y \
 # install python requirements
 RUN pip install --upgrade pip
 RUN pip install\
-	numpy==1.9.1 \
+	numpy==1.15.1 \
 	scipy \
 	pysam==0.8.1 \
 	matplotlib \
