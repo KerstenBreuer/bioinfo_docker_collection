@@ -22,8 +22,8 @@ RUN apt-get install -y \
 	libcurl4-openssl-dev
 
 # install python requirements
-RUN pip3 install --upgrade pip
-RUN pip3 install\
+RUN pip install --upgrade pip
+RUN pip install\
 	numpy \
 	scipy \
 	pysam \
