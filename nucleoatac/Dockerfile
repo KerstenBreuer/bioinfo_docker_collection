@@ -24,11 +24,11 @@ RUN apt-get install -y \
 # install python requirements
 RUN pip install --upgrade pip
 RUN pip install\
-	numpy \
+	numpy==1.9.1 \
 	scipy \
-	pysam \
+	pysam==0.8.1 \
 	matplotlib \
-	cython
+	cython==0.22
 	
 # install nucleoatac:
 RUN cd /usr/local/ && \
