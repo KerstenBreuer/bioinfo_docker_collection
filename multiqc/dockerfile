@@ -10,7 +10,7 @@ RUN apt-get install -y build-essential \
     python-pip
 
 ## Install MultiQC:
-ENV MULTIQC_VERSION 1.6
+ENV MULTIQC_VERSION 1.7
 RUN pip install multiqc==${MULTIQC_VERSION}
 
 CMD ["multiqc"]
