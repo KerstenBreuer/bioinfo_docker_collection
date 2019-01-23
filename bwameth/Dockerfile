@@ -9,6 +9,8 @@ ENV BWAMETH_LINK "https://github.com/brentp/bwa-meth/archive/v0.2.2.zip"
 # Install essential unix packages and dependencies:
 RUN apt-get update -y --fix-missing
 RUN apt-get install -y build-essential \
+	wget \
+	unzip \
     python-dev \
     python-pip
 RUN pip install toolshed
