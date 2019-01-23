@@ -1,10 +1,27 @@
-FROM publicisworldwide/python-conda:latest
+FROM ubuntu:16.04
 
-LABEL author="Kersten Breuer, Zeller Team, EMBL 2019" \
+LABEL author="Kersten Breuer, Zeller Team, EMBL 2017" \
     maintainer="kersten-breuer@outlook.com"
 
 # Package versions/links:
-ENV BWMETH_VERSION "0.2.2"
+ENV BWAMETH_LINK "https://github.com/brentp/bwa-meth/archive/v0.2.2.zip"
 
-# Install:
-RUN conda install bwameth
+# Install essential unix packages and dependencies:
+RUN apt-get update -y --fix-missing
+RUN apt-get install -y build-essential \
+    python-dev \
+    python-pip
+RUN pip install toolshed
+
+# Install main package:
+RUN cd /usr/local/ \
+	&& wget ${BWAMETH_LINK} \
+	&& unzip *.zip \
+	&& rm -rf *.zip \
+	&& mv bwa-meth* bwameth \
+	&& cd bwameth \
+	&& chmod a+x bwameth.py
+
+ENV PATH="/usr/local/bwameth:${PATH}"
+
+CMD ["bwameth.py"]
