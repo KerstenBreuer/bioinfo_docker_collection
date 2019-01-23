@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM kerstenbreuer/samtools:1.7
 
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2017" \
     maintainer="kersten-breuer@outlook.com"
@@ -7,9 +7,7 @@ LABEL author="Kersten Breuer, Zeller Team, EMBL 2017" \
 ENV BWAMETH_LINK "https://github.com/brentp/bwa-meth/archive/v0.2.2.zip"
 
 # Install essential unix packages and dependencies:
-RUN apt-get update -y --fix-missing
-RUN apt-get install -y build-essential \
-	wget \
+RUN apt-get install -y \
 	unzip \
     python-dev \
     python-pip
