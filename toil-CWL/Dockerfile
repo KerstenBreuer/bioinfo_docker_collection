@@ -14,7 +14,7 @@ RUN apt-get install -y build-essential \
 ## Install toil:
 ENV TOIL_VERSION 3.17.0
 RUN virtualenv /usr/bin/venv \
-    && source activate /usr/bin/venv/bin/activate \
+    && source /usr/bin/venv/bin/activate \
     && pip install toil[CWL]==${TOIL_VERSION}
 
 CMD ["cwltoil"]
