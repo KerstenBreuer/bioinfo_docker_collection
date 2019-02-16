@@ -17,7 +17,7 @@ RUN cd /usr/local/ && \
 	wget -O virtualenv.tar.gz ${VIRTUALENV_URL} && \
 	tar xzvf virtualenv.tar.gz && \
 	rm virtualenv.tar.gz && \
-	mv *virtualenv* nucleoatac && \
+	mv *virtualenv* virtualenv && \
     python ./virtualenv/virtualenv.py venv && \
     source venv/bin/activate
 
