@@ -18,11 +18,10 @@ RUN cd /usr/local/ && \
 	tar xzvf virtualenv.tar.gz && \
 	rm virtualenv.tar.gz && \
 	mv *virtualenv* virtualenv && \
-    python ./virtualenv/virtualenv.py venv && \
-    source venv/bin/activate
+    python ./virtualenv/virtualenv.py venv &&
 
 ## Install toil:
 ENV TOIL_VERSION 3.17.0
-RUN pip install toil[CWL]==${TOIL_VERSION}
+RUN /bin/bash -c "source /usr/local/venv/bin/activate ; pip install toil[CWL]==${TOIL_VERSION}"
 
-CMD ["cwltoil"]
+ENTRYPOINT [ "/usr/local/venv/bin/activate" ]
