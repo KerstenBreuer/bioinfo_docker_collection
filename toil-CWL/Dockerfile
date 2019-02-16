@@ -18,7 +18,7 @@ RUN cd /usr/local/ && \
 	tar xzvf virtualenv.tar.gz && \
 	rm virtualenv.tar.gz && \
 	mv *virtualenv* virtualenv && \
-    python ./virtualenv/virtualenv.py venv &&
+    python ./virtualenv/virtualenv.py venv
 
 ## Install toil:
 ENV TOIL_VERSION 3.17.0
