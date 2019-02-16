@@ -8,7 +8,7 @@ RUN apt-get update -y --fix-missing
 RUN apt-get install -y build-essential \
     python-dev \
     python-pip \
-    nodejs \
+    nodejs
 
 # Install virtual env:
 RUN pip install --upgrade pip \
