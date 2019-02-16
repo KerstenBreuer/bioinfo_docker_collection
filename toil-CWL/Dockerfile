@@ -10,6 +10,11 @@ RUN apt-get install -y build-essential \
     python-pip \
     nodejs
 
+# Install and activate virtual env:
+RUN pip install --no-cache-dir virtualenv \
+    && virtualenv /usr/bin/venv \
+    && source activate /usr/bin/venv/bin/activate
+
 ## Install toil:
 ENV TOIL_VERSION 3.17.0
 RUN pip install toil[CWL]==${TOIL_VERSION}
