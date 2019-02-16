@@ -14,7 +14,7 @@ RUN apt-get install -y build-essential \
 RUN pip install --upgrade pip \
     && pip install virtualenv \
     && virtualenv /usr/bin/venv \
-    && source /usr/bin/venv/bin/activate \
+    && source /usr/bin/venv/bin/activate
 
 ## Install toil:
 ENV TOIL_VERSION 3.17.0
