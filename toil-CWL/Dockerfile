@@ -9,12 +9,15 @@ RUN apt-get install -y build-essential \
     python-dev \
     python-pip \
     nodejs \
-    virtualenv 
+
+# Install virtual env:
+RUN pip install --upgrade pip \
+    && pip install virtualenv \
+    && virtualenv /usr/bin/venv \
+    && source /usr/bin/venv/bin/activate \
 
 ## Install toil:
 ENV TOIL_VERSION 3.17.0
-RUN virtualenv /usr/bin/venv \
-    && source /usr/bin/venv/bin/activate \
-    && pip install toil[CWL]==${TOIL_VERSION}
+RUN pip install toil[CWL]==${TOIL_VERSION}
 
 CMD ["cwltoil"]
