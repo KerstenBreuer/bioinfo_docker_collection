@@ -11,8 +11,7 @@ RUN apt-get install -y build-essential \
     nodejs
 
 # Install virtual env:
-RUN pip install --upgrade pip \
-    && pip install virtualenv \
+RUN pip install virtualenv \
     && virtualenv /usr/bin/venv \
     && source /usr/bin/venv/bin/activate
 
