@@ -23,5 +23,4 @@ RUN cd /usr/local/ && \
 ## Install toil:
 ENV TOIL_VERSION 3.17.0
 RUN /bin/bash -c "source /usr/local/venv/bin/activate ; pip install toil[CWL]==${TOIL_VERSION}"
-
-ENTRYPOINT [ "/usr/local/venv/bin/activate" ]
+ENV PATH=/usr/local/venv/bin/:${PATH}
