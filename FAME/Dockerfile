@@ -15,7 +15,9 @@ RUN apt-get install -y \
 	zlib1g-dev  \
 	libghc-bzlib-dev \
 	zlib1g-dev
-RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - && \
+RUN cd /usr/local/ && \
+	wget -O llvm https://apt.llvm.org/llvm-snapshot.gpg.key && \
+	sudo apt-key add llvm && \
 	sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" && \
 	sudo apt-get update && \
 	sudo apt-get install -y clang-6.0
