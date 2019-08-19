@@ -14,7 +14,7 @@ RUN apt-get install -y \
     tar \
 	zlib1g-dev  \
 	libghc-bzlib-dev \
-	zlib1g-dev \
+	zlib1g-dev
 
 # install FAME:
 RUN cd /usr/local/ && \
