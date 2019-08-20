@@ -14,7 +14,10 @@ RUN apt-get install -y \
     tar \
 	zlib1g-dev  \
 	libghc-bzlib-dev \
-	zlib1g-dev
+	zlib1g-dev \
+	software-properties-common \
+	python-software-properties \
+	python3-software-properties
 RUN cd /usr/local/ && \
 	wget -O llvm https://apt.llvm.org/llvm-snapshot.gpg.key && \
 	apt-key add llvm && \
