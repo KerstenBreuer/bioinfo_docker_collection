@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 LABEL author="Kersten Breuer, Cancer Epigenomics, Plass Team, DKFZ 2019" \
     maintainer="kersten-breuer@outlook.com"
@@ -16,14 +16,13 @@ RUN apt-get install -y \
 	libghc-bzlib-dev \
 	zlib1g-dev \
 	software-properties-common \
-	python-software-properties \
 	python3-software-properties
 RUN cd /usr/local/ && \
 	wget -O llvm https://apt.llvm.org/llvm-snapshot.gpg.key && \
 	apt-key add llvm && \
 	apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" && \
 	apt-get update && \
-	apt-get install -y clang-6.0
+	apt-get install -y clang
 
 # install FAME:
 RUN cd /usr/local/ && \
