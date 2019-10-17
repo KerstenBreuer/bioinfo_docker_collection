@@ -31,6 +31,11 @@ RUN cd /usr/local/ && \
 	rm FAME.tar.gz && \
 	mv FAME* FAME && \
 	cd FAME && \
+	rm -rf CONST.h
+
+COPY CONST.h /usr/local/FAME/CONST.h
+
+RUN cd /usr/local/FAME && \
 	make
 
 ENV PATH=/usr/local/FAME/:${PATH}
