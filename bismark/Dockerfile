@@ -51,8 +51,8 @@ ENV PATH="/usr/local/samtools/:${PATH}"
 
 # Install Bismark:
 RUN cd /usr/local/ \
-    && wget -o bismark.tar.gz https://github.com/FelixKrueger/Bismark/archive/${BISMARK_VERSION}.tar.gz \
-	&& tar xvfz bismark.tar.gz \
-	&& rm bismark.tar.gz \
+    && wget -o bismark.zip https://github.com/FelixKrueger/Bismark/archive/${BISMARK_VERSION}.zip \
+	&& unzip xvfz bismark.zip \
+	&& rm bismark.zip \
     && mv Bismark* bismark
 ENV PATH="/usr/local/bismark/:${PATH}"
