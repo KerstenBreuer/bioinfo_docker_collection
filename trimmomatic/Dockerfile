@@ -10,4 +10,4 @@ RUN apt-get -y install wget \
 ENV TRIMMOMATIC_VERSION "0.36+dfsg-3"
 
 #Install Trimmomatic:
-RUN apt-get -y trimmomatic="${TRIMMOMATIC_VERSION}"
+RUN apt-get -y install trimmomatic="${TRIMMOMATIC_VERSION}"
