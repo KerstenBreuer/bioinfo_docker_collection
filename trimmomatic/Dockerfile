@@ -11,3 +11,5 @@ ENV TRIMMOMATIC_VERSION "0.36+dfsg-3"
 
 #Install Trimmomatic:
 RUN apt-get -y install trimmomatic="${TRIMMOMATIC_VERSION}"
+
+CMD ["java", "-jar", "/usr/share/java/trimmomatic.jar"]
