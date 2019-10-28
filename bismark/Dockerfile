@@ -25,7 +25,13 @@ ENV SAMTOOLS_VERSION 1.9
 ENV BISMARK_VERSION 0.22.2
 
 #Install Bowtie2:
-RUN apt-get -y install bowtie2=2.3.5.1
+RUN cd /usr/local/ \
+    && wget -O bowtie2.tar.bz2 \
+    https://github.com/BenLangmead/bowtie2/releases/download/v${BOWTIE2_VERSION}/bowtie2-${BOWTIE2_VERSION}-linux-x86_64.zip \
+	&& tar -jxf bowtie2.tar.bz2 \
+	&& rm bowtie2.tar.bz2 \
+	&& mv bowtie2* bowtie2
+ENV PATH="/usr/local/bowtie2/:${PATH}"
 
 # Install samtools:
 RUN cd /usr/local/ \
@@ -40,7 +46,7 @@ RUN cd /usr/local/ \
     && ./configure \
 	&& make \
 	&& make install
-ENV PATH=/usr/local/samtools/:${PATH}
+ENV PATH="/usr/local/samtools/:${PATH}"
 
 # Install Bismark:
 RUN cd /usr/local/ \
@@ -48,4 +54,4 @@ RUN cd /usr/local/ \
 	&& tar xvfz bismark.tar.gz && \
 	&& rm bismark.tar.gz \
     && mv Bismark* bismark
-ENV PATH=/usr/local/bismark/:${PATH}
+ENV PATH="/usr/local/bismark/:${PATH}"
