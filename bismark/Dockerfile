@@ -8,6 +8,7 @@ RUN apt-get install -y \
     build-essential \
     wget \
     tar \
+    unzip \
     bzip2 \
 	cmake \
 	zlib1g-dev  \
@@ -26,10 +27,10 @@ ENV BISMARK_VERSION 0.22.2
 
 #Install Bowtie2:
 RUN cd /usr/local/ \
-    && wget -O bowtie2.tar.bz2 \
+    && wget -O bowtie2.zip \
     https://github.com/BenLangmead/bowtie2/releases/download/v${BOWTIE2_VERSION}/bowtie2-${BOWTIE2_VERSION}-linux-x86_64.zip \
-	&& tar -jxf bowtie2.tar.bz2 \
-	&& rm bowtie2.tar.bz2 \
+	&& unzip bowtie2.zip \
+	&& rm bowtie2.zip \
 	&& mv bowtie2* bowtie2
 ENV PATH="/usr/local/bowtie2/:${PATH}"
 
