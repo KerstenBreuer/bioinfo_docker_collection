@@ -10,7 +10,7 @@ RUN apt-get -y install \
     wget \
     unzip \
     libtbb-dev \
-    libxml2 libxml2-dev \
+    libxml2-dev \
     r-base-dev \
     libncursesw5-dev \
     libssl-dev \
@@ -26,7 +26,6 @@ RUN apt-get -y install \
     zlib1g-dev \
     bzip2 \
     libghc-bzlib-dev \
-    zlib1g-dev \
     liblzma-dev \
     libncurses5-dev \
     imagemagick \
@@ -44,4 +43,27 @@ RUN apt-get -y install \
     software-properties-common \
     default-jre \
     unzip \
-    glib-networking-common
+    glib-networking-common \
+    autoconf \
+    libtool \
+    libz-dev \
+    libcurl4-openssl-dev \
+    libcairo2-dev \
+    libsqlite-dev \
+    libmariadbd-dev \
+    libmariadbclient-dev \
+    libpq-dev \
+    libssh2-1-dev \
+    libhts-dev \
+    software-properties-common \
+    python3-software-properties \
+    nodejs \
+    ca-certificates \
+    libxslt-dev
+RUN cd /usr/local/ && \
+	wget -O llvm https://apt.llvm.org/llvm-snapshot.gpg.key && \
+	apt-key add llvm && \
+	apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" && \
+	apt-get update && \
+	apt-get install -y clang
+
