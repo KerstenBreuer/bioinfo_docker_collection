@@ -3,6 +3,11 @@ FROM ubuntu:18.04
 LABEL author="Kersten Breuer, Cancer Epigenomics, Plass Team, DKFZ 2019" \
     maintainer="kersten-breuer@outlook.com"
 
+ENV DEBCONF_FRONTEND noninteractive
+RUN echo "console-setup   console-setup/charmap47 select  UTF-8" > encoding.conf && \
+	debconf-set-selections encoding.conf && \
+	rm encoding.conf
+
 RUN apt-get -y update --fix-missing -qq
 RUN apt-get -y install \
     build-essential \
@@ -41,7 +46,6 @@ RUN apt-get -y install \
     vim-common \
     libbam-dev \
     software-properties-common \
-    default-jre \
     unzip \
     glib-networking-common \
     autoconf \
