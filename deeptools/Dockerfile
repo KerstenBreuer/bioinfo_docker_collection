@@ -4,7 +4,7 @@ LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
 # Package versions/links:
-ENV DEEPTOOlS_URL https://github.com/deeptools/deepTools/archive/3.1.1.tar.gz
+ENV DEEPTOOLS_VERSION 3.1.1
 
 # Install essential dependencies:
 RUN apt-get update -qq -y --fix-missing
@@ -34,7 +34,7 @@ RUN pip3 install\
 
 # install deeptools (remaining requirements should install automatically):
 RUN cd /usr/local/ && \
-	wget -O deepTools.tar.gz ${DEEPTOOlS_URL} && \
+	wget -O deepTools.tar.gz https://github.com/deeptools/deepTools/archive/${DEEPTOOLS_VERSION}tar.gz && \
 	tar xzvf deepTools.tar.gz && \
 	rm deepTools.tar.gz && \
 	mv deepTools* deepTools && \

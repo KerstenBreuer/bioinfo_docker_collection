@@ -9,10 +9,13 @@ RUN apt-get install -y build-essential \
     wget \
     unzip
 
+# Package versions/links:
+ENV FASTQC_VERSION 0.11.5
+
 ## Install FastqQC:
 ENV FASTQC_URL http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 RUN cd /usr/local/ \
-	&& wget ${FASTQC_URL} \
+	&& wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip \
 	&& unzip fastqc*.zip \
 	&& rm -rf fastqc*.zip \
 	&& cd FastQC \
