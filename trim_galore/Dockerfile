@@ -24,7 +24,7 @@ RUN pip3 install cutadapt==${CUTADAPT_VERSION}
 
 #Install FASTQC
 RUN cd /usr/local \
-	&& wget -O fastqc.zip http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_vS{FASTQC_VERSION}.zip \
+	&& wget -O fastqc.zip http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip \
 	&& unzip fastqc.zip \
 	&& rm fastqc.zip \
 	&& cd FastQC \
