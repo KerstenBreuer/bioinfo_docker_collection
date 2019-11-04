@@ -36,6 +36,7 @@ RUN cd /usr/local/ && \
 COPY CONST.h /usr/local/FAME/CONST.h
 
 RUN cd /usr/local/FAME && \
+	make clean && \
 	make
 
 ENV PATH=/usr/local/FAME/:${PATH}
