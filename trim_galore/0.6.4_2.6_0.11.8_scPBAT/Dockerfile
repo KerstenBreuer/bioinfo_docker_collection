@@ -1,4 +1,4 @@
-FROM kerstenbreuer/trim_galor:0.6.4_2.6_0.11.8
+FROM kerstenbreuer/trim_galore:0.6.4_2.6_0.11.8
 
 # Added Illumina Paired-End PCR Primer 2 sequence (CTACACGACGC) to FastQC
 # adapters list as recommeded by http://dx.doi.org/10.1038/nprot.2016.187.
