@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
+LABEL author="Kersten Breuer, Cancer Epigenomics, Plass Team, DKFZ 2019" \
     maintainer="kersten-breuer@outlook.com"
 
 # Package versions/links:
