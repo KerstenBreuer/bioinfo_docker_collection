@@ -23,7 +23,7 @@ RUN apt-get install -y \
 # Tool versions:
 ENV BOWTIE2_VERSION 2.3.5.1
 ENV SAMTOOLS_VERSION 1.9
-ENV BISMARK_VERSION 0.22.2
+ENV BISMARK_VERSION 0.22.3
 
 #Install Bowtie2:
 RUN cd /usr/local/ \
