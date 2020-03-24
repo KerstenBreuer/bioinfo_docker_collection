@@ -4,8 +4,8 @@ LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
 # install needed unix packages
-RUN apt-get update --fix-missing -qq; \
-    apt-get install -y \
+RUN DEBIAN_FRONTEND='noninteractive' apt-get update --fix-missing -qq; \
+    DEBIAN_FRONTEND='noninteractive' apt-get install -y \
 	libboost-all-dev \
 	r-base \
 	wget \
