@@ -6,9 +6,6 @@ LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
 ENV R_VERSION 3.6.1
 ENV PHANTOMPEAKQUALTOOLS_VERSION 1.2
 
-# add cran25 repo:
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 \
-	&& echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" > /etc/apt/sources.list.d/cran_repo.list 
 
 # install needed unix packages
 ENV DEBIAN_FRONTEND noninteractive
@@ -26,8 +23,14 @@ RUN apt-get update --fix-missing -qq; \
 	libncurses5-dev \
 	imagemagick \
 	gawk \
-	r-base==${R_VERSION}
+	gnupg2
 	
+# add cran25 repo:
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 \
+	&& echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" > /etc/apt/sources.list.d/cran_repo.list \
+	&& apt-get update --fix-missing -qq \
+    && apt-get install -y r-base==${R_VERSION}
+
 #Install samtools v1.5:
 RUN cd /usr/bin/ \
     && wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2 \
