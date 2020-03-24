@@ -3,11 +3,18 @@ FROM ubuntu:18.04
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
+ENV R_VERSION 3.6.1
+ENV PHANTOMPEAKQUALTOOLS_VERSION 1.2
+
+# add cran25 repo:
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 \
+	&& echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" > /etc/apt/sources.list.d/cran_repo.list 
+
 # install needed unix packages
-RUN DEBIAN_FRONTEND='noninteractive' apt-get update --fix-missing -qq; \
-    DEBIAN_FRONTEND='noninteractive' apt-get install -y \
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update --fix-missing -qq; \
+    apt-get install -y \
 	libboost-all-dev \
-	r-base \
 	wget \
 	tar \
 	cmake \
@@ -18,7 +25,8 @@ RUN DEBIAN_FRONTEND='noninteractive' apt-get update --fix-missing -qq; \
 	liblzma-dev  \
 	libncurses5-dev \
 	imagemagick \
-	gawk
+	gawk \
+	r-base==${R_VERSION}
 	
 #Install samtools v1.5:
 RUN cd /usr/bin/ \
@@ -29,12 +37,12 @@ RUN cd /usr/bin/ \
 	&& make \
 	&& make install
 	
-# download phantompeakqualtools v1.2:
+# download phantompeakqualtools:
 RUN cd /usr/bin \
-	&& wget  https://github.com/kundajelab/phantompeakqualtools/archive/1.2.tar.gz \
-    && tar -xzvf 1.2.tar.gz \
-	&& rm 1.2.tar.gz \
-	&& chmod 777 /usr/bin/phantompeakqualtools-1.2/run_spp.R
+	&& wget  https://github.com/kundajelab/phantompeakqualtools/archive/${PHANTOMPEAKQUALTOOLS_VERSION}.tar.gz \
+    && tar -xzvf ${PHANTOMPEAKQUALTOOLS_VERSION}.tar.gz \
+	&& rm ${PHANTOMPEAKQUALTOOLS_VERSION}.tar.gz \
+	&& chmod 777 /usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/run_spp.R
 
 # install all needed R packages:
 RUN Rscript -e "install.packages('snow', repos='http://cran.us.r-project.org')" \
@@ -42,6 +50,20 @@ RUN Rscript -e "install.packages('snow', repos='http://cran.us.r-project.org')" 
 	&& Rscript -e "install.packages('bitops', repos='http://cran.us.r-project.org')" \
 	&& Rscript -e "install.packages('caTools', repos='http://cran.us.r-project.org')" \
 	&& Rscript -e "source('http://bioconductor.org/biocLite.R'); biocLite('Rsamtools',suppressUpdates=TRUE)" \
-	&& Rscript -e "install.packages('/usr/bin/phantompeakqualtools-1.2/spp_1.14.tar.gz')"
+	&& Rscript -e "install.packages('/usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/spp_1.14.tar.gz')"
 
-ENV PATH=/usr/bin/samtools-1.5/:/usr/bin/phantompeakqualtools-1.2/:${PATH}
+ENV PATH=/usr/bin/samtools-1.5/:/usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/:${PATH}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
