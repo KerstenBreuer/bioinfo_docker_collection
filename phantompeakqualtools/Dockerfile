@@ -1,9 +1,8 @@
-FROM ubuntu:18.04
+FROM r-base:3.6.3
 
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
-ENV R_VERSION 3.6.1
 ENV PHANTOMPEAKQUALTOOLS_VERSION 1.2
 
 
@@ -25,13 +24,6 @@ RUN apt-get update --fix-missing -qq; \
 	gawk \
 	gnupg2
 	
-# add cran25 repo:
-RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 \
-	&& gpg -a --export E084DAB9 | apt-key add -
-RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" > /etc/apt/sources.list.d/cran_repo.list \
-	&& apt-get update --fix-missing -qq \
-    && apt-get install -y r-base==${R_VERSION}
-
 #Install samtools v1.5:
 RUN cd /usr/bin/ \
     && wget https://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2 \
