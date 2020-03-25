@@ -4,7 +4,7 @@ LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
 # Package versions/links:
-ENV DEEPTOOLS_VERSION 3.1.1
+ENV DEEPTOOLS_VERSION 3.3.1
 
 # Install essential dependencies:
 RUN apt-get update -qq -y --fix-missing
