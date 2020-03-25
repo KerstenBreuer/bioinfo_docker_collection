@@ -26,8 +26,9 @@ RUN apt-get update --fix-missing -qq; \
 	gnupg2
 	
 # add cran25 repo:
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 \
-	&& echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" > /etc/apt/sources.list.d/cran_repo.list \
+RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 \
+	&& gpg -a --export E084DAB9 | sudo apt-key add -
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" > /etc/apt/sources.list.d/cran_repo.list \
 	&& apt-get update --fix-missing -qq \
     && apt-get install -y r-base==${R_VERSION}
 
