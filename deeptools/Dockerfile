@@ -34,7 +34,7 @@ RUN pip3 install\
 
 # install deeptools (remaining requirements should install automatically):
 RUN cd /usr/local/ && \
-	wget -O deepTools.tar.gz https://github.com/deeptools/deepTools/archive/${DEEPTOOLS_VERSION}tar.gz && \
+	wget -O deepTools.tar.gz https://github.com/deeptools/deepTools/archive/${DEEPTOOLS_VERSION}.tar.gz && \
 	tar xzvf deepTools.tar.gz && \
 	rm deepTools.tar.gz && \
 	mv deepTools* deepTools && \
