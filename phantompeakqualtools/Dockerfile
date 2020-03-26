@@ -1,4 +1,4 @@
-FROM r-base:3.6.3
+FROM r-base:3.5.0
 
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
