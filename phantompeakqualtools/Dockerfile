@@ -23,7 +23,8 @@ RUN apt-get update --fix-missing -qq; \
 	imagemagick \
 	gawk \
 	gnupg2 \
-	curl
+	curl \
+	libcurl-devel
 	
 #Install samtools v1.5:
 RUN cd /usr/bin/ \
