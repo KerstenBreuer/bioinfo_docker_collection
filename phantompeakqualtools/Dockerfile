@@ -1,4 +1,4 @@
-FROM r-base:3.5.0
+FROM r-base:3.6.1
 
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
@@ -45,7 +45,7 @@ RUN Rscript -e "install.packages('snow', repos='http://cran.us.r-project.org')" 
 	&& Rscript -e "install.packages('snowfall', repos='http://cran.us.r-project.org')" \
 	&& Rscript -e "install.packages('bitops', repos='http://cran.us.r-project.org')" \
 	&& Rscript -e "install.packages('caTools', repos='http://cran.us.r-project.org')" \
-	&& Rscript -e "source('http://bioconductor.org/biocLite.R'); biocLite('Rsamtools',suppressUpdates=TRUE)" \
+	&& Rscript -e "install.packages('BiocManager'); BiocManager::install('Rsamtools')" \
 	&& Rscript -e "install.packages('/usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/spp_1.14.tar.gz')"
 
 ENV PATH=/usr/bin/samtools-1.5/:/usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/:${PATH}
