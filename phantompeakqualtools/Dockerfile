@@ -22,7 +22,8 @@ RUN apt-get update --fix-missing -qq; \
 	libncurses5-dev \
 	imagemagick \
 	gawk \
-	gnupg2
+	gnupg2 \
+	curl
 	
 #Install samtools v1.5:
 RUN cd /usr/bin/ \
