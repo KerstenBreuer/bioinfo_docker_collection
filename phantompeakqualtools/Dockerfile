@@ -24,7 +24,7 @@ RUN apt-get update --fix-missing -qq; \
 	gawk \
 	gnupg2 \
 	curl \
-	libcurl-devel
+	libcurl4-openssl-dev
 	
 #Install samtools v1.5:
 RUN cd /usr/bin/ \
