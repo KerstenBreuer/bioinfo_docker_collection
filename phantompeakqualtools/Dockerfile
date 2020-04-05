@@ -3,7 +3,7 @@ FROM r-base:3.6.1
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
-ENV PHANTOMPEAKQUALTOOLS_VERSION 1.2
+ENV PHANTOMPEAKQUALTOOLS_VERSION 1.2.2
 
 
 # install needed unix packages
