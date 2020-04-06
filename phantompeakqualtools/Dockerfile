@@ -1,10 +1,9 @@
-FROM r-base:3.6.1
+FROM conda/miniconda3
 
 LABEL author="Kersten Breuer, Zeller Team, EMBL 2018" \
     maintainer="kersten-breuer@outlook.com"
 
-ENV PHANTOMPEAKQUALTOOLS_VERSION 1.2.2
-
+ENV PHANTOMPEAKQUALTOOLS_VERSION 1.2
 
 # install needed unix packages
 ENV DEBIAN_FRONTEND noninteractive
@@ -43,12 +42,12 @@ RUN cd /usr/bin \
 	&& chmod 777 /usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/run_spp.R
 
 # install all needed R packages:
-RUN Rscript -e "install.packages('snow', repos='http://cran.us.r-project.org')" \
-	&& Rscript -e "install.packages('snowfall', repos='http://cran.us.r-project.org')" \
-	&& Rscript -e "install.packages('bitops', repos='http://cran.us.r-project.org')" \
-	&& Rscript -e "install.packages('caTools', repos='http://cran.us.r-project.org')" \
-	&& Rscript -e "install.packages('BiocManager'); BiocManager::install('Rsamtools')" \
-	&& Rscript -e "install.packages('/usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/spp_1.14.tar.gz')"
+RUN conda install -c bioconda -c conda-forge \
+	r-snow \
+	r-bitops \
+	r-caTools \
+	bioconductor-rsamtools \
+	phantompeakqualtools==${PHANTOMPEAKQUALTOOLS_VERSION}
 
 ENV PATH=/usr/bin/samtools-1.5/:/usr/bin/phantompeakqualtools-${PHANTOMPEAKQUALTOOLS_VERSION}/:${PATH}
 
