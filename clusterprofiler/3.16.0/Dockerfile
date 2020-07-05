@@ -1,4 +1,4 @@
-FROM conda/miniconda3
+FROM informationsea/bioconda:3
 
 LABEL author="Kersten Breuer, Cancer Epigenomics, Plass Team, DKFZ 2019" \
     maintainer="kersten-breuer@outlook.com"
@@ -14,5 +14,6 @@ RUN conda install -c conda-forge -c bioconda \
 	r-tidyverse \
 	bioconductor-clusterprofiler==${CLUSTERPROFILER_VERSION} \
 	bioconductor-reactomepa==${REACTOMEPA_VERSION} \
-	bioconductor-reactome.db==${REACTOMEDB_VERSION}
+	bioconductor-reactome.db==${REACTOMEDB_VERSION} \
+	bioconductor-org.hs.eg.db
 
