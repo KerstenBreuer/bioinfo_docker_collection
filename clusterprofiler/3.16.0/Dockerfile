@@ -15,5 +15,6 @@ RUN conda install -c conda-forge -c bioconda \
 	bioconductor-clusterprofiler==${CLUSTERPROFILER_VERSION} \
 	bioconductor-reactomepa==${REACTOMEPA_VERSION} \
 	bioconductor-reactome.db==${REACTOMEDB_VERSION} \
-	bioconductor-org.hs.eg.db
-
+	bioconductor-org.hs.eg.db \
+	bioconductor-chipseeker \
+	bioconductor-txdb.hsapiens.ucsc.hg38.knowngene
