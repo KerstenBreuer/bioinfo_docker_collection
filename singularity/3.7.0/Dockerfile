@@ -54,3 +54,5 @@ RUN cd /usr/local/ && \
 	make -C ./builddir install
 
 ENV PATH /usr/local/singularity/:${PATH}
+
+CMD ["cwlab", "up", "-c", "/etc/cwlab/config.yaml"]
