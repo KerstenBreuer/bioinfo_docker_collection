@@ -28,14 +28,14 @@ RUN apt-get install -y \
 ENV DEBCONF_FRONTEND noninteractive
 RUN echo "console-setup   console-setup/charmap47 select  UTF-8" > encoding.conf && \
 	debconf-set-selections encoding.conf && \
-	rm encoding.conf
-RUN apt-get install -qq -y \
-	squashfs-tools \
-	uuid-dev \
-	libgpgme11-dev \
-	libseccomp-dev \
-	pkg-config \
-	git
+	rm encoding.conf && \
+	DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
+		squashfs-tools \
+		uuid-dev \
+		libgpgme11-dev \
+		libseccomp-dev \
+		pkg-config \
+		git
 
 ENV GOPATH /usr/local/go_path
 ENV PATH /usr/local/go/bin:${PATH}:${GOPATH}/bin
