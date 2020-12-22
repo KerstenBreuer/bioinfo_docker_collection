@@ -35,13 +35,14 @@ RUN echo "console-setup   console-setup/charmap47 select  UTF-8" > encoding.conf
 		libgpgme11-dev \
 		libseccomp-dev \
 		pkg-config \
-		git
+		git \
+		cryptsetup-bin
 
 ENV GOPATH /usr/local/go_path
 ENV PATH /usr/local/go/bin:${PATH}:${GOPATH}/bin
-RUN wget https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz && \
-	tar -C /usr/local -xzvf go1.12.7.linux-amd64.tar.gz && \
-    rm go1.12.7.linux-amd64.tar.gz && \
+RUN wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz && \
+	tar -C /usr/local -xzvf go1.15.6.linux-amd64.tar.gz && \
+    rm go1.15.6.linux-amd64.tar.gz && \
 	go get -u github.com/golang/dep/cmd/dep
 
 RUN cd /usr/local/ && \
