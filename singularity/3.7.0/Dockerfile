@@ -7,7 +7,7 @@ LABEL author="Kersten Breuer, Cancer Epigenomics, Plass Team, DKFZ 2019" \
     maintainer="kersten-breuer@outlook.com"
 
 # Package versions/links:
-ENV SINGULARITY_VERSION 3.3.0
+ENV SINGULARITY_VERSION 3.7.0
 
 # Install essential dependencies:
 RUN apt-get update -qq -y --fix-missing
